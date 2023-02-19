@@ -4,10 +4,8 @@ function updateChannelData() {
     var sheet = SpreadsheetApp.getActiveSheet();
     // Get the value of cell A2
     var profileUrl = sheet.getRange("A2").getValue();
-    // Set some formatting for the cell A2
-    sheet.getRange("A2").setFontSize("10").setFontColor("white").setFontWeight("bold");
     // Replace with your own YouTube API key
-    var apiKey = "AIzaSyB-YDvlmT7onqCQpX0--sTVnXPCyG2f2Ys"
+    var apiKey = "YOUR_API-KEY"
     // Extract the channel ID from the URL
     var channelId = extractChannelIdFromUrl(profileUrl);
     // Get the playlist ID for the channel
@@ -64,7 +62,7 @@ function updateChannelData() {
       }
     }
     
-    // Set the video data and thumbnails on the sheet
+    // Set the video data on the sheet
     sheet.getRange(12,2, data.length, data[0].length).setValues(data).setHorizontalAlignment("center");
   
   
@@ -73,7 +71,7 @@ function updateChannelData() {
       var thumbnailUrl = t_data[i][0];
       var range = sheet.getRange(11 + i, 2);
       // For each thumbnail, it sets a formula in a range to display the thumbnail image in the sheet.
-      range.setFormula('=IMAGE("' + thumbnailUrl + '",4,73,130)');
+      range.setFormula('=IMAGE("' + thumbnailUrl + '",4,73,130)').setHorizontalAlignment("center");
       var row = sheet.getRange(11 + i, 2);
       // It also sets the height of the row to 80 pixels.
       sheet.setRowHeight(row.getRow(), 80);

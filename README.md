@@ -12,13 +12,13 @@ This Google Apps Script pulls data from a Youtube channel's public video data to
 This script is used to retrieve and display public video data of a Youtube channel. The script gets the channel URL In column A2 as input and fetches all the video details from that channel, such as video title, publish date, views, comments, likes and the thumbnail of the video. In addition, the subscriber count and total number of videos for the channel are also fetched. The script outputs all the data to the Google Sheet.
 
 #### Instructions
-Open a Google Sheet.
-Input the Channel Url in column A2.The URL should be in this format: https://www.youtube.com/channel/CHANNEL_ID
-Click on the "Tools" menu, then select "Apps script"
-Copy and paste the code from this repository to the Apps script.
-Save the project with a name of your choice.
-Update the apiKey variable in the getVideosFromChannel and getVideoDetails functions with your own API key. You can get an API key from the Google Cloud Console. [Click here](https://developers.google.com/youtube/v3/getting-started)
-Click on run to execute the script.
+- Open a Google Sheet.
+- Input the Channel Url in column A2.The URL should be in this format: https://www.youtube.com/channel/CHANNEL_ID.
+- Click on the "Tools" menu, then select "Apps script"
+- Copy and paste the code from this repository to the Apps script.
+- Save the project with a name of your choice.
+- Update the apiKey variable in the getVideosFromChannel and getVideoDetails functions with your own API key. You can get an API key from the Google Cloud Console. [Click here](https://developers.google.com/youtube/v3/getting-started)
+- Click on run to execute the script.
 
 **_How to find a Channel's Id ?_**
 > **_Search any video of that channel and click on the that_** 
@@ -54,3 +54,6 @@ The **design** function is used to design the output sheet.
 The **updateChannelData** function then populates the sheet with the required data.
 
 Finally, the **updateChannelDat** function calls the design function to format the output.
+
+
+Link to the sheet [click here](https://docs.google.com/spreadsheets/d/13oqU7iIPNUkc1nr3pR5sT6CSBjmoWlIQnCBrqDw97cU/edit?usp=sharing)
