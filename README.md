@@ -13,11 +13,12 @@ This script is used to retrieve and display public video data of a Youtube chann
 
 #### Instructions
 Open a Google Sheet.
-Click on the "Tools" menu, then select "Script editor."
-Copy and paste the code from this repository to the script editor.
+Input the Channel Url in column A2.The URL should be in this format: https://www.youtube.com/channel/CHANNEL_ID
+Click on the "Tools" menu, then select "Apps script"
+Copy and paste the code from this repository to the Apps script.
 Save the project with a name of your choice.
 Update the apiKey variable in the getVideosFromChannel and getVideoDetails functions with your own API key. You can get an API key from the Google Cloud Console. [Click here](https://developers.google.com/youtube/v3/getting-started)
-Run the updateChannelData function to execute the script.
+Click on run to execute the script.
 
 **_How to find a Channel's Id ?_**
 > **_Search any video of that channel and click on the that_** 
