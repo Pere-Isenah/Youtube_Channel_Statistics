@@ -1,25 +1,42 @@
+
 // This function updates data on the active sheet of a Google Spreadsheet
 function updateChannelData() {
     // Get the active sheet
-    var sheet = SpreadsheetApp.getActiveSheet();
+    var sheet = SpreadsheetApp.getActive().getActiveSheet();
+    //clear data in sheet except column A2
+    clearSheet(sheet)
     // Get the value of cell A2
     var profileUrl = sheet.getRange("A2").getValue();
+  
+    //check if A2 is empty
+    if (profileUrl === "") {
+      clearSheet(sheet)
+    }
+  
     // Replace with your own YouTube API key
-    var apiKey = "YOUR_API-KEY"
+    var apiKey = "YOUR_API_KEY"
+  
     // Extract the channel ID from the URL
     var channelId = extractChannelIdFromUrl(profileUrl);
+  
     // Get the playlist ID for the channel
     var playlistId = getPlaylistId(channelId,apiKey);
+  
     // Get video data for the channel
     var videos = getVideosFromChannel(playlistId,apiKey);
+  
     // Get channel analytics data
     var channelProfileAnalytic = getChannelProfileAnalytic(channelId,apiKey);
+  
     // Get channel profile picture URL
     var channelProfilePic = getProfilePic(channelId,apiKey);
+  
     // Initialize an empty array for the video data
     var data = [];
+  
     // Initialize an empty array for the channel analytics data
     var channelData = []; 
+  
     // Initialize an empty array for the video thumbnails
     var t_data = [];
   
@@ -63,7 +80,7 @@ function updateChannelData() {
     }
     
     // Set the video data on the sheet
-    sheet.getRange(12,2, data.length, data[0].length).setValues(data).setHorizontalAlignment("center");
+    sheet.getRange(11,3, data.length, data[0].length).setValues(data).setHorizontalAlignment("center");
   
   
     // This loop iterates through the t_data array to get the URL of each thumbnail.
@@ -82,8 +99,28 @@ function updateChannelData() {
   
     // This applies the design formatting to the sheet.
     design(sheet)
+    
   }
   
+  
+  // This function clears all the existing conditional formatting rules and content of a sheet except for cell A2.
+  function clearSheet(sheet){
+    // Get the range of all data in the sheet
+    var range = sheet.getDataRange();
+    // Get the values of the range
+    var values = range.getValues();
+  
+    // Loop through all the values in the range
+    for (var i = 0; i < values.length; i++) {
+      for (var j = 0; j < values[i].length; j++) {
+        // If the cell is not A2, clear its content
+        if (j !== 0 || i !== 1) {
+          range.getCell(i+1, j+1).clear();
+        }
+      }
+    }
+    
+  }
   
   // This function extracts the channel ID from a YouTube channel URL
   function extractChannelIdFromUrl(url) {
@@ -221,5 +258,4 @@ function updateChannelData() {
     // Set the width of column 1 to 200 pixels
     sheet.setColumnWidth(1, 200);
   }
-  
-  
+    
